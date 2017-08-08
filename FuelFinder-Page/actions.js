@@ -22,7 +22,7 @@ export const fetchFuelDetails = (zipCode) => {
                          )
                  .then(resp => {console.log("resp", resp)
                                 return resp.json()})
-                 .then(json => {dispatch(returnGeoInfo(json))})
+                 .then(json => {dispatch(returnGeoInfo(json,lat,lng))})
                  .catch(err => { console.log ("err",err)
                                 dispatch({type:"FETCH_MESSAGE_ERROR",error:err})})
              
@@ -36,9 +36,19 @@ export const fetchFuelDetails = (zipCode) => {
 
 }
 
-function returnGeoInfo(fuelDet) {  
+export function handleMarkerClick(){
+    return (dispatch) => {
+        dispatch({type:"MARKER_CLICKED",payload:''})
+    }
+}
+
+function returnGeoInfo(fuelDet,lat,lng) {  
      return {
     type: "FETCH_GEOINFO_SUCCESS",
-    payload:fuelDet
+    payload:{
+        fuelDet:fuelDet,
+        lat:lat,
+        lng:lng
+    }
   } 
 }
