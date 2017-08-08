@@ -18,7 +18,7 @@ export const fetchFuelDetails = (zipCode) => {
                  longitude:lng
              }
              
-             return fetch(`http://api.mygasfeed.com/stations/radius/${lat}/${lng}/5/reg/distance/5pf2pf32o3.json`
+             return fetch(`//api.mygasfeed.com/stations/radius/${lat}/${lng}/5/reg/distance/5pf2pf32o3.json`
                          )
                  .then(resp => {console.log("resp", resp)
                                 return resp.json()})
